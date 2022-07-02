@@ -1,0 +1,54 @@
+<head>
+  <link href="https://fonts.googleapis.com/icon?family=Materia+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  
+</head>
+<div class="table-wrapper" style="width: 1000px; margin: auto;">
+  <div class="table-title d-flex justify-content-between mb-3 box" 
+        style= "background-color:   #4d628a; padding: 20px; color: white;">
+      <h5 ><b> Manage Employees</b></h5>
+      <button class="btn btn-outline-info" (click)="addModal()">
+          <i class="fas fa-plus-circle"></i>
+          <span>
+            <span class="material-icons" 
+                style="float: left; padding-right :0.2em; color: yellow; ">add
+            </span><b> Add</b>
+        </span>
+      </button>
+  </div>
+  <table class="table table-hover table-striped table-striped-columns table-bordered" style="margin-top: -14px;">
+      <thead>
+          <tr>
+              <th scope="col" style="text-align: center;">First Name</th>
+              <th scope="col" style="text-align: center;">Last Name</th>
+              <th scope="col" style="text-align: center;">Email</th>
+              <th scope="col" style="text-align: center;">Address</th>
+              <th scope="col" style="text-align: center;">Phone</th>
+              <th scope="col" style="text-align: center;">Action</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let posts of posts">
+              <td scope="row">{{posts.firstname}}</td>
+              <td>{{posts.lastname}}</td>
+              <td>{{posts.email}}</td>
+              <td>{{posts.address}}</td>
+              <td>{{posts.phone}}</td>
+              <td style="text-align: center;">
+                  <button [routerLink]="'/employee/' + posts._id" type="button"
+                      class="btn btn-outline-info btn-sm" style="margin-right: 1em; border: none; ">
+                    <i class="material-icons" style="font-size: 20px; ">&#xE417;</i>
+                    </button>
+                  <button (click)="editModal(posts, posts._id)" type="button" 
+                    class="btn btn-outline-dark btn-sm" style="margin-right: 1em; border: none; color: darkorange">
+                    <i class="material-icons" style="font-size: 20px;">&#xe22b;</i>
+                  </button>
+                  <button (click)="hapus(posts._id)" type="button" 
+                      class="btn btn-outline-danger btn-sm" style="border:none;">
+                      <i class="material-symbols-outlined" style="font-size: 20px;">&#xE872;</i>
+                    </button>
+              </td>
+          </tr>
+      </tbody>
+  </table>
+</div>
